@@ -24,7 +24,7 @@ app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './views');
 
+app.use('/register', register_page);
 app.use('/api/register', register);
-app.use('/ui/register_page', register_page);
 
 app.listen(PORT, () => console.log(`Serveris veikia ant ${PORT} porto`))
