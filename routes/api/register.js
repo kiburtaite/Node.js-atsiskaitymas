@@ -7,7 +7,7 @@ const router = express.Router();
 router.post('/', async (req, res) => {
     try{
     if (validation(req.body)){
-        const hashedPass = await bcrypt.hash(req.body.pass, 5);
+        const hashedPass = await bcrypt.hash(req.body.password, 5);
         await con.query(`
         INSERT INTO users (full_name, email, password)
         VALUES (?,?,?)`,
@@ -23,10 +23,10 @@ router.post('/', async (req, res) => {
 let validation = body => {
     if (body.email.includes('@') &&
         body.email.includes('.') &&
-        body.pass === body.passRepeat &&
-        body.pass.length >= 8 &&
-        /[a-z]/.test(body.pass) &&
-        /[0-9]/.test(body.pass)
+        body.password === body.password_repeat &&
+        body.password.length >= 8 &&
+        /[a-z]/.test(body.password) &&
+        /[0-9]/.test(body.password)
         ){return true}
     };
 
