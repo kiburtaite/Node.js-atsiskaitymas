@@ -21,7 +21,7 @@ const authorization = (req, res, next) => {
     })
 };
 
-router.get('/:id', async (req,res) => {
+router.get('/:id', authorization, async (req,res) => {
     const [data] = await con.query(
         `SELECT * FROM test_db.accounts
         LEFT OUTER JOIN test_db.groups
