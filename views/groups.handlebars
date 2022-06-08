@@ -1,4 +1,13 @@
 <h1>{{ title }}</h1>
 {{#each list}}
-<p>{{this.group_id_accounts}}</p>
+<div>
+    <p>{{this.group_id_accounts}}</p>
+    <p>{{this.name}}</p>
+</div>
 {{/each}}
+<form>
+<h3 action="" method="post">Pridėti grupę</h3>
+<p>Grupės ID:</p>
+<input type="number" name="group_id" min="0">
+<input type="submit" value="Pridėti grupę">
+</form>
