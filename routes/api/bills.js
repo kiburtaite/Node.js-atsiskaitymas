@@ -3,14 +3,12 @@ import con from '../../connection.js';
 
 const router = express.Router();
 
-router.get('/:id', async (req, res) => {
+router.get('/:group_id', async (req, res) => {
     try{
         const [data] = await con.query(`
-        SELECT * FROM test_db.accounts
-        LEFT OUTER JOIN test_db.groups
-        ON test_db.accounts.group_id_accounts=test_db.groups.id
-        WHERE test_db.accounts.user_id = ?`
-        [req.params.id]);
+        SELECT * FROM test_db.bills
+        WHERE test_db.group_id_bills.group_id_bills = ?`
+        [req.params.group_id]);
         res.send(data);
     } catch (err){
         res.status(400).send({err})
@@ -20,9 +18,10 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     try{
         const [data] = await con.query(
-        `INSERT INTO test_db.accounts SET ?`, {
-            group_id_accounts: req.query.group_id,
-            user_id: ''
+        `INSERT INTO test_db.bills SET ?`, {
+            group_id_bills: '',
+            amount: req.body.amount,
+            description: req.body.description
         });
         res.send(data);
     } catch (err){

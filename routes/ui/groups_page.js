@@ -23,10 +23,10 @@ const authorization = (req, res, next) => {
 
 router.get('/:id', async (req,res) => {
     const [data] = await con.query(
-        `SELECT * FROM accounts
+        `SELECT * FROM test_db.accounts
         LEFT OUTER JOIN test_db.groups
-        ON accounts.group_id_accounts=groups.id
-        WHERE accounts.user_id = ?`, [req.params.id]);
+        ON test_db.accounts.group_id_accounts=test_db.groups.id
+        WHERE test_db.accounts.user_id = ?`, [req.params.id]);
         res.render('groups', {
             title: 'Grupės',
             list: data
