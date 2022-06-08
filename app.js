@@ -7,6 +7,7 @@ import login from './routes/api/login.js';
 import { engine } from 'express-handlebars';
 import cookieParser from 'cookie-parser';
 import register_page from './routes/ui/register_page.js';
+import login_page from './routes/ui/login_page.js';
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -28,7 +29,8 @@ app.set('view engine', 'handlebars');
 app.set('views', './views');
 
 app.use('/register', register_page);
-app.use('/api/login', login);
+app.use('/login', login_page);
 app.use('/api/register', register);
+app.use('/api/login', login);
 
 app.listen(PORT, () => console.log(`Serveris veikia ant ${PORT} porto`))

@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
         INSERT INTO users (full_name, email, password)
         VALUES (?,?,?)`,
         [req.body.full_name, req.body.email, hashedPass]);
-        res.redirect('/register');
+        res.redirect('/login');
     } else {
         res.send("Netinkami registracijos duomenys")}
     } catch (err){
