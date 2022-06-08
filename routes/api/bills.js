@@ -7,7 +7,7 @@ router.get('/:group_id', async (req, res) => {
     try{
         const [data] = await con.query(`
         SELECT * FROM test_db.bills
-        WHERE test_db.group_id_bills.group_id_bills = ?`
+        WHERE test_db.bills.group_id_bills = ?`
         [req.params.group_id]);
         res.send(data);
     } catch (err){
