@@ -9,6 +9,7 @@ import { engine } from 'express-handlebars';
 import cookieParser from 'cookie-parser';
 import register_page from './routes/ui/register_page.js';
 import login_page from './routes/ui/login_page.js';
+import groups_page from './routes/ui/groups_page.js';
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -31,6 +32,7 @@ app.set('views', './views');
 
 app.use('/register', register_page);
 app.use('/login', login_page);
+app.use('/groups', groups_page);
 app.use('/api/register', register);
 app.use('/api/login', login);
 app.use('/api/groups', groups)
