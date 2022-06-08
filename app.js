@@ -5,6 +5,8 @@ import cors from 'cors';
 import register from './routes/api/register.js';
 import login from './routes/api/login.js';
 import groups from './routes/api/groups.js';
+import accounts from './routes/api/accounts.js';
+import bills from './routes/api/bills.js';
 import { engine } from 'express-handlebars';
 import cookieParser from 'cookie-parser';
 import register_page from './routes/ui/register_page.js';
@@ -35,6 +37,8 @@ app.use('/login', login_page);
 app.use('/groups', groups_page);
 app.use('/api/register', register);
 app.use('/api/login', login);
-app.use('/api/groups', groups)
+app.use('/api/groups', groups);
+app.use('/api/accounts', accounts);
+app.use('/api/bills', bills);
 
 app.listen(PORT, () => console.log(`Serveris veikia ant ${PORT} porto`))
