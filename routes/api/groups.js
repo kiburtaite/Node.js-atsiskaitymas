@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/', authorization, async (req, res) => {
+router.post('/', async (req, res) => {
     try{
         const [data] = await con.query(`
         INSERT INTO test_db.groups
