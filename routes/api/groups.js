@@ -1,25 +1,7 @@
 import express from 'express';
 import con from '../../connection.js';
-import jwt from 'jsonwebtoken';
 
 const router = express.Router();
-
-const authorization = (req, res, next) => {
-    const token = req.cookies.token;
-    const privateKey = process.env.JWT_TOKEN;
-    if (!token) {
-        res.redirect('/login')
-      } else
-      jwt.verify(token, privateKey, (err, decoded) => {
-        if(err){
-            res.redirect('/login')
-        } else {
-            const verification = jwt.verify(token, privateKey);
-            req.user_id = verification.id;
-            return next();
-        }
-    })
-};
 
 router.get('/', async (req, res) => {
     try{
