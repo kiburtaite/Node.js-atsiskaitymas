@@ -1,0 +1,16 @@
+<h1>{{ title }}</h1>
+{{#each list}}
+<div>
+    <p>{{this.id}}</p>
+    <p>{{this.amount}} Eurai</p>
+    <p>{{this.description}}</p>
+</div>
+{{/each}}
+<form>
+<h3 action="" method="post">Pridėti naują sąskaitą</h3>
+<p>Suma:</p>
+<input type="number" name="amount" min="0" step="0.01">
+<p>Aprašymas:</p>
+<input type="text" name="description">
+<input type="submit" value="Pridėti sąskaitą">
+</form>
