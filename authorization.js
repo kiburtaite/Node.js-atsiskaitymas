@@ -7,13 +7,13 @@ const authorization = (req, res, next) => {
         res.redirect('/login');
       } else
       jwt.verify(token, privateKey, (err, decoded) => {
+          console.log(decoded);
         if(err){
             res.redirect('/timeout');
-            //res.status(400).send({err: "Sesija baigėsi. Prašome prisijungti"})
         } else {
-            const verification = jwt.verify(token, privateKey);
-            req.user_id = verification.id;
-            return next();
+            const user_id = decoded.id;
+            next();
+            return user_id
         }
     })
 };
