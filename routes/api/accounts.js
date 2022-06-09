@@ -20,12 +20,11 @@ router.get('/', authorization, async (req, res) => {
 
 router.post('/', authorization, async (req, res) => {
     try{
-        const [data] = await con.query(
+        await con.query(
         `INSERT INTO test_db.accounts SET ?`, {
             group_id_accounts: req.body.group_id,
             user_id: req.user_id
-        });
-        console.log(req)
+        })
     } catch (err){
         res.status(400).send({err})
     }
