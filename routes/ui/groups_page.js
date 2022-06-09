@@ -4,12 +4,12 @@ import authorization from '../../authorization.js';
 
 const router = express.Router();
 
-router.get('/:id', authorization, async (req,res) => {
+router.get('/', authorization, async (req,res) => {
     const [data] = await con.query(
         `SELECT * FROM test_db.accounts
         LEFT OUTER JOIN test_db.groups
         ON test_db.accounts.group_id_accounts=test_db.groups.id
-        WHERE test_db.accounts.user_id = ?`, [req.params.id]);
+        WHERE test_db.accounts.user_id = ?`, [req.cookies.user_id]);
         res.render('groups', {
             title: 'Grupės',
             list: data

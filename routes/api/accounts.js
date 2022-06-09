@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
             group_id_accounts: req.body.group_id,
             user_id: req.cookies.user_id
         });
-        res.redirect(`/groups/${req.cookies.user_id}`)
+        res.redirect('/groups')
     } catch (err){
         res.status(400).send({err})
     }

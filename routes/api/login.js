@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
                 httpOnly: true
             })
             .status(200)
-            .redirect(`/groups/${data[0].id}`)
+            .redirect('/groups')
         } else {res.status(400).send({err})};
     } catch (err) {
         res.status(400).send({err})
