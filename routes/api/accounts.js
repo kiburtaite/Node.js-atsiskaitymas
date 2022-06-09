@@ -22,10 +22,10 @@ router.post('/', authorization, async (req, res) => {
     try{
         const [data] = await con.query(
         `INSERT INTO test_db.accounts SET ?`, {
-            group_id_accounts: req.query.group_id,
+            group_id_accounts: req.body.group_id,
             user_id: req.user_id
         });
-        res.send(data);
+        console.log(req)
     } catch (err){
         res.status(400).send({err})
     }
