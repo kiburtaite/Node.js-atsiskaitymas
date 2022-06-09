@@ -1,5 +1,6 @@
 import express from 'express';
 import con from '../../connection.js';
+import authorization from '../../authorization.js';
 
 const router = express.Router();
 
@@ -13,7 +14,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', authorization, async (req, res) => {
     try{
         const [data] = await con.query(`
         INSERT INTO test_db.groups
