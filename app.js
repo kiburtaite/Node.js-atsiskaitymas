@@ -33,6 +33,12 @@ app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './views');
 
+app.get('/', async (req,res) => {
+        res.render('home', {
+            title: 'Pradinis puslapis',
+        })
+}); 
+
 app.use('/register', register_page);
 app.use('/login', login_page);
 app.use('/groups', groups_page);
