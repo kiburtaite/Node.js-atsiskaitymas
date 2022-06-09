@@ -6,9 +6,8 @@
     <p>{{this.name}}</p>
 </div>
 {{/each}}
-<form>
-<h3 action="/api/accounts" method="post">Pridėti naują grupę</h3>
-<p>Grupės ID:</p>
+<h3>Pridėti naują grupę</h3>
+<form action="/api/accounts" method="post">
 <input type="number" name="group_id" min="0">
 <input type="submit" value="Pridėti grupę">
 </form>

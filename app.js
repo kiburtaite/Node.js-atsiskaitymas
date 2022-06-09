@@ -33,13 +33,13 @@ app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './views');
 
-app.get('/', async (req,res) => {
+app.get('/', async (req, res) => {
         res.render('home', {
             title: 'Pradinis puslapis',
         })
 });
 
-app.get('/timeout', async (req,res) => {
+app.get('/timeout', async (req, res) => {
     res.render('timeout', {
         title: 'Sesija baigėsi',
     })

@@ -7,13 +7,13 @@ const authorization = (req, res, next) => {
         res.redirect('/login');
       } else
       jwt.verify(token, privateKey, (err, decoded) => {
-          console.log(decoded);
         if(err){
             res.redirect('/timeout');
         } else {
-            const user_id = decoded.id;
             next();
-            return user_id
+            return res.cookie('user_id', decoded.id, {
+                httpOnly: true
+            })
         }
     })
 };

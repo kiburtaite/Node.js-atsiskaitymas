@@ -11,20 +11,21 @@ router.get('/', authorization, async (req, res) => {
         LEFT OUTER JOIN test_db.groups
         ON test_db.accounts.group_id_accounts=test_db.groups.id
         WHERE test_db.accounts.user_id = ?`
-        [req.user_id]);
+        [req.cookies.user_id]);
         res.send(data);
     } catch (err){
         res.status(400).send({err})
     }
 });
 
-router.post('/', authorization, async (req, res) => {
+router.post('/', async (req, res) => {
     try{
         await con.query(
         `INSERT INTO test_db.accounts SET ?`, {
             group_id_accounts: req.body.group_id,
-            user_id: req.user_id
-        })
+            user_id: req.cookies.user_id
+        });
+        res.redirect(`/groups/${req.cookies.user_id}`)
     } catch (err){
         res.status(400).send({err})
     }
