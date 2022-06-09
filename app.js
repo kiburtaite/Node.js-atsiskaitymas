@@ -37,6 +37,12 @@ app.get('/', async (req,res) => {
         res.render('home', {
             title: 'Pradinis puslapis',
         })
+});
+
+app.get('/timeout', async (req,res) => {
+    res.render('timeout', {
+        title: 'Sesija baigėsi',
+    })
 }); 
 
 app.use('/register', register_page);
