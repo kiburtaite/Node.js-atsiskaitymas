@@ -1,5 +1,9 @@
-<h2>Vartotojo vardas: {{ user }}</h2>
-<h2>El.paštas: {{ email }}</h2>
+{{#each user}}
+<h2>Vartotojo vardas: {{this.full_name}}</h2>
+{{/each}}
+{{#each user}}
+    <h2>El.paštas: {{this.email}}</h2>
+{{/each}}
 <div class="container">
     {{#each list}}
     <div class="field">
