@@ -4,7 +4,7 @@ import authorization from '../../authorization.js';
 
 const router = express.Router();
 
-router.get('/:group_id', authorization, async (req,res) => {
+router.get('/:group_id', authorization, async (req, res) => {
     const [data] = await con.query(
         `SELECT * FROM test_db.bills
         WHERE test_db.bills.group_id_bills = ?`, 

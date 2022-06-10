@@ -1,16 +1,20 @@
-<h1>{{ title }}</h1>
-{{#each list}}
-<div>
-    <p>{{this.id}}</p>
-    <p>{{this.amount}} Eurai</p>
-    <p>{{this.description}}</p>
+<h2>Grupės sąskaitos</h2>
+<div class="container">
+    {{#each list}}
+    <div class="field">
+        <p>Sąskaitos ID: {{this.id}}</p>
+        <p>Suma: {{this.amount}} Eurai</p>
+        <p>Aprašymas: {{this.description}}</p>
+    </div>
+    {{/each}}
+    <div class="field">
+        <h3>Pridėti naują sąskaitą</h3>
+        <form action="/api/bills/{{this.id}}" method="post">
+        <p>Suma:</p>
+        <input type="number" name="amount" min="0" step="0.01">
+        <p>Aprašymas:</p>
+        <input type="text" name="description">
+        <input type="submit" value="Pridėti sąskaitą">
+        </form>
+    </div>
 </div>
-{{/each}}
-<form action="/api/bills" method="post">
-<h3>Pridėti naują sąskaitą</h3>
-<p>Suma:</p>
-<input type="number" name="amount" min="0" step="0.01">
-<p>Aprašymas:</p>
-<input type="text" name="description">
-<input type="submit" value="Pridėti sąskaitą">
-</form>

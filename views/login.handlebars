@@ -1,8 +1,11 @@
-<h1>{{ title }}</h1>
-<form action="/api/login" method="post">
-    <label for="email">El. paštas</label>
-    <input type="email" name="email" id="email">
-    <label for="password">Slaptažodis</label>
-    <input type="password" name="password" id="password">
-    <input type="submit" value="Prisijungti">
-</form>
+<div class="center">
+    <h1>{{ title }}</h1>
+    <form action="/api/login" method="post">
+        <label for="email">El. paštas</label>
+        <input type="email" name="email" id="email"><br>
+        <label for="password">Slaptažodis</label>
+        <input type="password" name="password" id="password"><br>
+        <input type="submit" value="Prisijungti">
+    </form>
+        <p>Neturite paskyros? <a href="/register">Registruokitės</a></p>
+</div>

@@ -10,9 +10,14 @@ router.get('/', authorization, async (req,res) => {
         LEFT OUTER JOIN test_db.groups
         ON test_db.accounts.group_id_accounts=test_db.groups.id
         WHERE test_db.accounts.user_id = ?`, [req.cookies.identity]);
+        const [user] = await con.query(
+            `SELECT * FROM test_db.users
+            WHERE test_db.users.id = ?`, [req.cookies.identity]);    
         res.render('groups', {
             title: 'Grupės',
-            list: data
+            list: data,
+            user: user[0].full_name,
+            email: user[0].email
         })
 });
 

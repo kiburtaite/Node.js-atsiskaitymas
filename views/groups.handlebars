@@ -1,13 +1,19 @@
-<h1>{{ title }}</h1>
-{{#each list}}
-<div>
-    <a href="/bills/{{this.id}}">grupe</a>
-    <p>{{this.group_id_accounts}}</p>
-    <p>{{this.name}}</p>
+<h2>Vartotojo vardas: {{ user }}</h2>
+<h2>El.paštas: {{ email }}</h2>
+<div class="container">
+    {{#each list}}
+    <div class="field">
+        <a href="/bills/{{this.id}}">
+            <p>Grupės ID: {{this.group_id_accounts}}</p>
+            <p>{{this.name}}</p>
+        </a>
+    </div>
+    {{/each}}
+    <div class="field">
+        <h3>Pridėti naują grupę</h3>
+        <form action="/api/accounts" method="post">
+        <input type="number" name="group_id" min="0">
+        <input type="submit" value="Pridėti grupę">
+        </form>
+    </div>
 </div>
-{{/each}}
-<h3>Pridėti naują grupę</h3>
-<form action="/api/accounts" method="post">
-<input type="number" name="group_id" min="0">
-<input type="submit" value="Pridėti grupę">
-</form>
