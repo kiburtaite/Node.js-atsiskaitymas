@@ -7,10 +7,10 @@ const authorization = async (req, res, next) => {
         res.redirect('/login');
       } else
       jwt.verify(token, privateKey, (err, decoded) => {
-          const identity = decoded.user_id;
         if(err){
             res.redirect('/timeout');
         } else {
+            const identity = decoded.user_id;
             next();
             return res.cookie('identity', identity, {
                 httpOnly: true
