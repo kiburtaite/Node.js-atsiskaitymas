@@ -11,7 +11,8 @@ router.get('/:group_id', authorization, async (req, res) => {
         [req.params.group_id]);
         res.render('bills', {
             title: 'Sąskaitos',
-            list: data
+            list: data,
+            group: req.params.group_id
         })
 }); 
 
