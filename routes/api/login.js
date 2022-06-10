@@ -8,7 +8,7 @@ const router = express.Router();
 router.post('/', async (req, res) => {
     try{
         const [data] = await con.query(`
-        SELECT * from users
+        SELECT * from test_db.users
         WHERE email = ?`,
         req.body.email);
         if (data.length === 0){
@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
         if (await bcrypt.compare(req.body.password, data[0].password)){
             const privateKey = process.env.JWT_TOKEN;
             const token = jwt.sign({
-                "id": data[0].id
+                "user_id": data[0].id
             }, privateKey, { expiresIn: '5min'});
             return res.cookie('token', token, {
                 httpOnly: true
